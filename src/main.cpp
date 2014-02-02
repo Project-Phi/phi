@@ -32,7 +32,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0xb0b28fb61a9c68ae3992e4751e7994c7b9f7f339de26d03b3f6d582a1ea68837");
+uint256 hashGenesisBlock("0x");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // PhiCoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1075,7 +1075,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 }
 
 
-int64 nTargetTimespan = 25 * 5 * 60; // PhiCoin: 1.0 day
+int64 nTargetTimespan = 25 * 5 * 60; // 25 block
 static const int64 nTargetSpacing = 5 * 60; // PhiCoin: 2.0 minutes
 
 //
@@ -2825,7 +2825,7 @@ bool InitBlockIndex() {
     // Only add the genesis block if not reindexing (in which case we reuse the one already on disk)
     if (!fReindex) {
         
-        const char* pszTimestamp = !fTestNet ? "PhiCoin... 30/Jan/2014 - Next Next Next ?"  : "RPC Testnet3";
+        const char* pszTimestamp = !fTestNet ? "PhiCoin..?"  : "RPC Testnet3";
 
         CTransaction txNew;
         txNew.vin.resize(1);
@@ -2838,9 +2838,9 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1391296056;
+        block.nTime    = 1391370870;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 274968;
+        block.nNonce   = 0;
 
         if (fTestNet)
         {
@@ -2851,7 +2851,7 @@ bool InitBlockIndex() {
 
         
         // If genesis block hash does not match, then generate new genesis hash.
-              if (false && block.GetHash() != hashGenesisBlock)
+              if (true && block.GetHash() != hashGenesisBlock)
               {
                   printf("Searching for genesis block...\n");
                   // This will figure out a valid hash and Nonce if you're
