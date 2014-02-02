@@ -32,7 +32,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x");
+uint256 hashGenesisBlock("0xb0b28fb61a9c68ae3992e4751e7994c7b9f7f339de26d03b3f6d582a1ea68837");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // PhiCoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1066,10 +1066,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = 16 * COIN;
 
-    if(nHeight < 2)
-    {
-        nSubsidy = 8000 * COIN;
-    }
+    if(nHeight == 1)
+		return 8000 * COIN;
 	
     nSubsidy >>= (nHeight / 50000); // PhiCoin: 50k blocks in ~4 years
 
@@ -1077,7 +1075,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 }
 
 
-int64 nTargetTimespan = 1.0 * 24 * 60 * 60; // PhiCoin: 1.0 day
+int64 nTargetTimespan = 25 * 5 * 60; // PhiCoin: 1.0 day
 static const int64 nTargetSpacing = 5 * 60; // PhiCoin: 2.0 minutes
 
 //
@@ -2827,33 +2825,33 @@ bool InitBlockIndex() {
     // Only add the genesis block if not reindexing (in which case we reuse the one already on disk)
     if (!fReindex) {
         
-        const char* pszTimestamp = !fTestNet ? "PhiCoin is coming ... 30/Jan/2014 - Next Next Next ?"  : "RPC Testnet3";
+        const char* pszTimestamp = !fTestNet ? "PhiCoin... 30/Jan/2014 - Next Next Next ?"  : "RPC Testnet3";
 
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 1 * COIN;
+        txNew.vout[0].nValue = 16 * COIN;
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1391209904;
+        block.nTime    = 1391296056;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 0;
+        block.nNonce   = 274968;
 
         if (fTestNet)
         {
-            block.nTime    = 1391209904;
+            block.nTime    = 1391296056;
             block.nBits    = 0x1e0ffff0;
             block.nNonce   = 0;
         }
 
         
         // If genesis block hash does not match, then generate new genesis hash.
-              if (true && block.GetHash() != hashGenesisBlock)
+              if (false && block.GetHash() != hashGenesisBlock)
               {
                   printf("Searching for genesis block...\n");
                   // This will figure out a valid hash and Nonce if you're
@@ -2905,7 +2903,7 @@ bool InitBlockIndex() {
         }
         else
         {
-            assert(block.hashMerkleRoot == uint256("0x"));
+            assert(block.hashMerkleRoot == uint256("0xd132e4c1f49873de612a377c84996773a7e84d61f46454f1d66b63caa33eadf0"));
         }
 
         block.print();
