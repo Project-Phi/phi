@@ -1064,10 +1064,10 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 16 * COIN;
+    int64 nSubsidy = 1.6 * COIN;
 
     if(nHeight == 1)
-		return 8000 * COIN;
+		return 800 * COIN;
 	
     nSubsidy >>= (nHeight / 50000); // PhiCoin: 50k blocks in ~4 years
 
@@ -1076,7 +1076,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 
 int64 nTargetTimespan = 25 * 5 * 60; // 25 block
-static const int64 nTargetSpacing = 5 * 60; // PhiCoin: 2.0 minutes
+static const int64 nTargetSpacing = 5 * 60; // PhiCoin: 5.0 minutes
 
 //
 // minimum amount of work that could possibly be required nTime after
