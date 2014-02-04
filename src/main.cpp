@@ -1067,16 +1067,16 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     int64 nSubsidy = 1.6 * COIN;
 
     if(nHeight == 1)
-		return 800 * COIN;
+		return 1000 * COIN;
 	
-    nSubsidy >>= (nHeight / 50000); // PhiCoin: 50k blocks in ~4 years
+    nSubsidy >>= (nHeight / 35000); // PhiCoin: 35k block halving
 
     return nSubsidy + nFees;
 }
 
 
-int64 nTargetTimespan = 25 * 5 * 60; // 25 block
-static const int64 nTargetSpacing = 5 * 60; // PhiCoin: 5.0 minutes
+int64 nTargetTimespan = 40 * 2.5 * 60; // 40 block
+static const int64 nTargetSpacing = 2.5 * 60; // PhiCoin: 5.0 minutes
 
 //
 // minimum amount of work that could possibly be required nTime after
