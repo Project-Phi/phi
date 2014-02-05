@@ -1,9 +1,9 @@
-Building RonPaulCoin
+Building Phicoin
 
-See doc/readme-qt.rst for instructions on building RonPaulCoin-Qt,
+See doc/readme-qt.rst for instructions on building Phicoin-Qt,
 the intended-for-end-users, nice-graphical-interface, reference
-implementation of RonPaulCoin.
+implementation of Phicoin.
 
-See doc/build-*.txt for instructions on building ronpaulcoind,
+See doc/build-*.txt for instructions on building phicoind,
 the intended-for-services, no-graphical-interface, reference
-implementation of RonPaulCoin.
+implementation of Phicoin.

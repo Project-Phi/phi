@@ -1,4 +1,4 @@
-Name RonPaulCoin
+Name Phicoin
 
 RequestExecutionLevel highest
 SetCompressor /SOLID lzma
@@ -6,8 +6,8 @@ SetCompressor /SOLID lzma
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
 !define VERSION 0.8.6.1
-!define COMPANY "RonPaulCoin project"
-!define URL http://www.ronpaulcoin.org/
+!define COMPANY "Phicoin project"
+!define URL http://www.phicoin.org/
 
 # MUI Symbol Definitions
 !define MUI_ICON "../share/pixmaps/bitcoin.ico"
@@ -19,8 +19,8 @@ SetCompressor /SOLID lzma
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
-!define MUI_STARTMENUPAGE_DEFAULTFOLDER RonPaulCoin
-!define MUI_FINISHPAGE_RUN $INSTDIR\ronpaulcoin-qt.exe
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER Phicoin
+!define MUI_FINISHPAGE_RUN $INSTDIR\phicoin-qt.exe
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "../share/pixmaps/nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
@@ -45,14 +45,14 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile ronpaulcoin-0.8.6.1-win32-setup.exe
-InstallDir $PROGRAMFILES\RonPaulCoin
+OutFile phicoin-0.8.6.1-win32-setup.exe
+InstallDir $PROGRAMFILES\Phicoin
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
 VIProductVersion 0.8.6.1
-VIAddVersionKey ProductName RonPaulCoin
+VIAddVersionKey ProductName Phicoin
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
 VIAddVersionKey CompanyWebsite "${URL}"
@@ -66,18 +66,18 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File ../release/ronpaulcoin-qt.exe
+    File ../release/phicoin-qt.exe
     File /oname=COPYING.txt ../COPYING
     File /oname=readme.txt ../doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File ../src/ronpaulcoind.exe
+    File ../src/phicoind.exe
     SetOutPath $INSTDIR\src
     File /r /x *.exe /x *.o ../src\*.*
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
 
     # Remove old wxwidgets-based-bitcoin executable and locales:
-    Delete /REBOOTOK $INSTDIR\ronpaulcoin.exe
+    Delete /REBOOTOK $INSTDIR\phicoin.exe
     RMDir /r /REBOOTOK $INSTDIR\locale
 SectionEnd
 
@@ -87,8 +87,8 @@ Section -post SEC0001
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\RonPaulCoin.lnk" $INSTDIR\ronpaulcoin-qt.exe
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall RonPaulCoin.lnk" $INSTDIR\uninstall.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Phicoin.lnk" $INSTDIR\phicoin-qt.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall Phicoin.lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayVersion "${VERSION}"
@@ -98,10 +98,10 @@ Section -post SEC0001
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" UninstallString $INSTDIR\uninstall.exe
     WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoModify 1
     WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoRepair 1
-    WriteRegStr HKCR "ronpaulcoin" "URL Protocol" ""
-    WriteRegStr HKCR "ronpaulcoin" "" "URL:RonPaulCoin"
-    WriteRegStr HKCR "ronpaulcoin\DefaultIcon" "" $INSTDIR\ronpaulcoin-qt.exe
-    WriteRegStr HKCR "ronpaulcoin\shell\open\command" "" '"$INSTDIR\ronpaulcoin-qt.exe" "%1"'
+    WriteRegStr HKCR "phicoin" "URL Protocol" ""
+    WriteRegStr HKCR "phicoin" "" "URL:Phicoin"
+    WriteRegStr HKCR "phicoin\DefaultIcon" "" $INSTDIR\phicoin-qt.exe
+    WriteRegStr HKCR "phicoin\shell\open\command" "" '"$INSTDIR\phicoin-qt.exe" "%1"'
 SectionEnd
 
 # Macro for selecting uninstaller sections
@@ -119,7 +119,7 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o -un.Main UNSEC0000
-    Delete /REBOOTOK $INSTDIR\ronpaulcoin-qt.exe
+    Delete /REBOOTOK $INSTDIR\phicoin-qt.exe
     Delete /REBOOTOK $INSTDIR\COPYING.txt
     Delete /REBOOTOK $INSTDIR\readme.txt
     RMDir /r /REBOOTOK $INSTDIR\daemon
@@ -129,9 +129,9 @@ SectionEnd
 
 Section -un.post UNSEC0001
     DeleteRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall RonPaulCoin.lnk"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\RonPaulCoin.lnk"
-    Delete /REBOOTOK "$SMSTARTUP\RonPaulCoin.lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall Phicoin.lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Phicoin.lnk"
+    Delete /REBOOTOK "$SMSTARTUP\Phicoin.lnk"
     Delete /REBOOTOK $INSTDIR\uninstall.exe
     Delete /REBOOTOK $INSTDIR\debug.log
     Delete /REBOOTOK $INSTDIR\db.log
@@ -139,7 +139,7 @@ Section -un.post UNSEC0001
     DeleteRegValue HKCU "${REGKEY}" Path
     DeleteRegKey /IfEmpty HKCU "${REGKEY}\Components"
     DeleteRegKey /IfEmpty HKCU "${REGKEY}"
-    DeleteRegKey HKCR "ronpaulcoin"
+    DeleteRegKey HKCR "phicoin"
     RmDir /REBOOTOK $SMPROGRAMS\$StartMenuGroup
     RmDir /REBOOTOK $INSTDIR
     Push $R0

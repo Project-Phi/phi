@@ -1,4 +1,4 @@
-Mac OS X ronpaulcoind build instructions
+Mac OS X phicoind build instructions
 ====================================
 
 Authors
@@ -26,7 +26,7 @@ Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.
 Notes
 -----
 
-See `doc/readme-qt.rst` for instructions on building RonPaulCoin-Qt, the
+See `doc/readme-qt.rst` for instructions on building Phicoin-Qt, the
 graphical user interface.
 
 Tested on OS X 10.5 through 10.8 on Intel processors only. PPC is not
@@ -72,14 +72,14 @@ Installing the dependencies using MacPorts is very straightforward.
 
     sudo port install boost db48@+no_java openssl miniupnpc
 
-### Building `ronpaulcoind`
+### Building `phicoind`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone git@github.com:ronpaulcoin-project/ronpaulcoin.git ronpaulcoin
-        cd ronpaulcoin
+        git clone git@github.com:phicoin-project/phicoin.git phicoin
+        cd phicoin
 
-2.  Build ronpaulcoind:
+2.  Build phicoind:
 
         cd src
         make -f makefile.osx
@@ -107,12 +107,12 @@ If not, you can ensure that the Brew OpenSSL is correctly linked by running
 
 Rerunning "openssl version" should now return the correct version.
 
-### Building `ronpaulcoind`
+### Building `phicoind`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone git@github.com:ronpaulcoin-project/ronpaulcoin.git ronpaulcoin
-        cd ronpaulcoin
+        git clone git@github.com:phicoin-project/phicoin.git phicoin
+        cd phicoin
 
 2.  Modify source in order to pick up the `openssl` library.
 
@@ -122,7 +122,7 @@ Rerunning "openssl version" should now return the correct version.
 
         patch -p1 < contrib/homebrew/makefile.osx.patch
 
-3.  Build ronpaulcoind:
+3.  Build phicoind:
 
         cd src
         make -f makefile.osx
@@ -134,10 +134,10 @@ Rerunning "openssl version" should now return the correct version.
 Creating a release build
 ------------------------
 
-A ronpaulcoind binary is not included in the RonPaulCoin-Qt.app bundle. You can ignore
-this section if you are building `ronpaulcoind` for your own use.
+A phicoind binary is not included in the Phicoin-Qt.app bundle. You can ignore
+this section if you are building `phicoind` for your own use.
 
-If you are building `litecond` for others, your build machine should be set up
+If you are building `phicond` for others, your build machine should be set up
 as follows for maximum compatibility:
 
 All dependencies should be compiled with these flags:
@@ -156,30 +156,30 @@ As of December 2012, the `boost` port does not obey `macosx_deployment_target`.
 Download `http://gavinandresen-bitcoin.s3.amazonaws.com/boost_macports_fix.zip`
 for a fix. Some ports also seem to obey either `build_arch` or
 `macosx_deployment_target`, but not both at the same time. For example, building
-on an OS X 10.6 64-bit machine fails. Official release builds of RonPaulCoin-Qt are
+on an OS X 10.6 64-bit machine fails. Official release builds of Phicoin-Qt are
 compiled on an OS X 10.6 32-bit machine to workaround that problem.
 
-Once dependencies are compiled, creating `RonPaulCoin-Qt.app` is easy:
+Once dependencies are compiled, creating `Phicoin-Qt.app` is easy:
 
     make -f Makefile.osx RELEASE=1
 
 Running
 -------
 
-It's now available at `./ronpaulcoind`, provided that you are still in the `src`
+It's now available at `./phicoind`, provided that you are still in the `src`
 directory. We have to first create the RPC configuration file, though.
 
-Run `./ronpaulcoind` to get the filename where it should be put, or just try these
+Run `./phicoind` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=ronpaulcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/RonPaulCoin/ronpaulcoin.conf"
-    chmod 600 "/Users/${USER}/Library/Application Support/RonPaulCoin/ronpaulcoin.conf"
+    echo -e "rpcuser=phicoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Phicoin/phicoin.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/Phicoin/phicoin.conf"
 
 When next you run it, it will start downloading the blockchain, but it won't
 output anything while it's doing this. This process may take several hours.
 
 Other commands:
 
-    ./ronpaulcoind --help  # for a list of command-line options.
-    ./ronpaulcoind -daemon # to start the ronpaulcoin daemon.
-    ./ronpaulcoind help    # When the daemon is running, to get a list of RPC commands
+    ./phicoind --help  # for a list of command-line options.
+    ./phicoind -daemon # to start the phicoin daemon.
+    ./phicoind help    # When the daemon is running, to get a list of RPC commands

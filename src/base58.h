@@ -274,7 +274,7 @@ public:
     {
         PUBKEY_ADDRESS = 56, // PhiCoin addresses start with R
         SCRIPT_ADDRESS = 5,
-        PUBKEY_ADDRESS_TEST = 122,
+        PUBKEY_ADDRESS_TEST = 111,
         SCRIPT_ADDRESS_TEST = 196,
     };
 
