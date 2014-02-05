@@ -1,7 +1,7 @@
 Phicoin integration/staging tree
 ================================
 
-http://www.phicoin.cc
+http://phicoin.cc
 
 
 What is Phicoin?
@@ -20,7 +20,7 @@ Phicoin is a scrypt version of Bitcoin using scrypt as a proof-of-work algorithm
 The rest is the same as Bitcoin.
 
 For more information, as well as an immediately useable, binary version of
-the Phicoin client sofware, see http://www.phicoin.cc
+the Phicoin client sofware, see http://phicoin.cc
 
 License
 -------
