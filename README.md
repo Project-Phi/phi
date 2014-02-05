@@ -9,8 +9,9 @@ Copyright (c) 2011-2013 Phicoin Developers
 What is Phicoin?
 ----------------
 
-Phicoin is a phi version of Bitcoin using scrypt as a proof-of-work algorithm.
+Phicoin is a scrypt version of Bitcoin using scrypt as a proof-of-work algorithm.
  - 2.5 minute block targets
+ - 25 block difficulty retargets
  - 1.6 Coins per block
  - subsidy halves in 70K Blocks
  - ~569 thousand total coins
@@ -19,7 +20,6 @@ Phicoin is a phi version of Bitcoin using scrypt as a proof-of-work algorithm.
  - Addresses Begin with 'R'
 
 The rest is the same as Bitcoin.
- - 2016 blocks to retarget difficulty
 
 For more information, as well as an immediately useable, binary version of
 the Phicoin client sofware, see http://www.phicoin.org.
