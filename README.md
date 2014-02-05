@@ -13,7 +13,7 @@ Phicoin is a phi version of Bitcoin using scrypt as a proof-of-work algorithm.
  - 2.5 minute block targets
  - 1.6 Coins per block
  - subsidy halves in 70K Blocks
- - ~596 thousand total coins
+ - ~569 thousand total coins
  - Default RPC Port: 1741
  - Default P2P Port: 1744
  - Addresses Begin with 'R'
