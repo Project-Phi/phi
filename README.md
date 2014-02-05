@@ -11,11 +11,14 @@ What is Phicoin?
 
 Phicoin is a phi version of Bitcoin using scrypt as a proof-of-work algorithm.
  - 2.5 minute block targets
- - subsidy halves in 840k blocks (~4 years)
- - ~84 million total coins
+ - 1.6 Coins per block
+ - subsidy halves in 70K Blocks
+ - ~596 thousand total coins
+ - Default RPC Port: 1741
+ - Default P2P Port: 1744
+ - Addresses Begin with 'R'
 
 The rest is the same as Bitcoin.
- - 50 coins per block
  - 2016 blocks to retarget difficulty
 
 For more information, as well as an immediately useable, binary version of
